@@ -111,6 +111,8 @@
 					});
 				}
 			}
+			function editableTableLoad()
+			{}
 		</script>
 	</head>
 	<body>
