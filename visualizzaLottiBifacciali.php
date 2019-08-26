@@ -338,7 +338,7 @@
 					<?php
 					echo "<select name='filtroCommessaLotto' id='filtroCommessaLotto' onchange='showTableLotti(0);'>";
 					echo "<option value='%'>*</option>";
-					$queryCommessa2="SELECT DISTINCT commesse.commessa FROM commesse,lotti WHERE lotti.commessa=commesse.id_commessa";
+					$queryCommessa2="SELECT DISTINCT commesse.commessa FROM commesse,lotti_bf WHERE lotti_bf.commessa=commesse.id_commessa";
 					$resultCommessa2=sqlsrv_query($conn,$queryCommessa2);
 					if($resultCommessa2==FALSE)
 					{
