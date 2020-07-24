@@ -400,19 +400,15 @@
 					orderType:orderType
 				});
 			}
-			function assegnaLotto(lotto,bf)
+			function assegnaLotto(lotto,tipo,acronimo)
 			{
-				if(bf)
-					bifacciale=" bifacciale";
-				else
-					bifacciale="";
 				if(lotto==null || lotto=='')
 				{
 					Swal.fire
 					({
 						type: 'error',
 						title: 'Errore',
-						text: 'Nessun lotto'+bifacciale+' selezionato'
+						text: 'Nessun lotto '+tipo+' selezionato'
 					});
 				}
 				else
@@ -428,7 +424,7 @@
 					}
 					else
 					{
-						newCircleSpinner("Creazione lotto"+bifacciale+" in corso...");
+						newCircleSpinner("Creazione lotto "+tipo+" in corso...");
 						var id_gn_array=[];
 						var table = document.getElementById("myTable"+selectetTable);
 						for (var i = 1, row; row = table.rows[i]; i++)
@@ -437,12 +433,11 @@
 								id_gn_array.push(row.cells[0].innerHTML);
 						}
 						var JSONid_gn_array=JSON.stringify(id_gn_array);
-						bf=JSON.stringify(bf);
 						$.post("assegnaLotto.php",
 						{
 							JSONid_gn_array,
 							lotto,
-							bf
+							acronimo
 						},
 						function(response, status)
 						{
@@ -454,7 +449,7 @@
 									Swal.fire
 									({
 										type: 'success',
-										title: 'Lotto'+bifacciale+' creato'
+										title: 'Lotto '+tipo+' creato'
 									}).then((result) => 
 									{
 										swal.close();
@@ -467,7 +462,7 @@
 									({
 										type: 'error',
 										title: 'Errore',
-										text: 'Impossibile creare il lotto'+bifacciale+'. Se il problema persiste contattare l amministratore'
+										text: 'Impossibile creare il lotto '+tipo+'. Se il problema persiste contattare l amministratore'
 									});
 								}
 							}
@@ -532,13 +527,21 @@
 			<button class="absoluteActionBarGnButton" onclick="excelExport('containerGestioneGeneralNumbering')">Esporta <i style="margin-left:5px;color:green" class="far fa-file-excel"></i></button>
 			<button class="absoluteActionBarGnButton" onclick="resetFilters();getTable(selectetTable)">Ripristina <i style="margin-left:5px" class="fal fa-filter"></i></button>
 			
-			<button class="absoluteActionBarGnButton" onclick="assegnaLotto(document.getElementById('assegnaLottoInput').value,false)" style="float:right">Assegna <i style="margin-left:5px" class="fal fa-list-alt"></i></button>
+			<button class="absoluteActionBarGnButton" onclick="assegnaLotto(document.getElementById('assegnaLottoInput').value,'monofacciale','')" style="float:right">Assegna <i style="margin-left:5px" class="fal fa-list-alt"></i></button>
 			<input type="number" class="absoluteActionBarGnInput" id="assegnaLottoInput" style="padding-right:0px;float:right" />
 			<div class="absoluteActionBarGnElement" style="float:right">Lotto</div>
 			
-			<button class="absoluteActionBarGnButton" onclick="assegnaLotto(document.getElementById('assegnaLottoInputBf').value,true)" style="float:right;margin-right:50px">Assegna<i style="margin-left:5px" class="fal fa-list-alt"></i></button>
+			<button class="absoluteActionBarGnButton" onclick="assegnaLotto(document.getElementById('assegnaLottoInputBf').value,'bifacciale','_bf')" style="float:right;margin-right:50px">Assegna<i style="margin-left:5px" class="fal fa-list-alt"></i></button>
 			<input type="number" class="absoluteActionBarGnInput" id="assegnaLottoInputBf" style="padding-right:0px;float:right" />
 			<div class="absoluteActionBarGnElement" style="float:right">Lotto B.F.</div>
+
+			<button class="absoluteActionBarGnButton" onclick="assegnaLotto(document.getElementById('assegnaLottoInputMb').value,'monobifacciale','_mb')" style="float:right;margin-right:50px">Assegna<i style="margin-left:5px" class="fal fa-list-alt"></i></button>
+			<input type="number" class="absoluteActionBarGnInput" id="assegnaLottoInputMb" style="padding-right:0px;float:right" />
+			<div class="absoluteActionBarGnElement" style="float:right">Lotto M.B.</div>
+
+			<button class="absoluteActionBarGnButton" onclick="assegnaLotto(document.getElementById('assegnaLottoInputNb').value,'nuovobifacciale','_nb')" style="float:right;margin-right:50px">Assegna<i style="margin-left:5px" class="fal fa-list-alt"></i></button>
+			<input type="number" class="absoluteActionBarGnInput" id="assegnaLottoInputMb" style="padding-right:0px;float:right" />
+			<div class="absoluteActionBarGnElement" style="float:right">Lotto N.B.</div>
 		</div>
 		<div id="containerGestioneGeneralNumbering"></div>
 		<!--<div id="container">

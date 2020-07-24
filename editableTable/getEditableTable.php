@@ -31,7 +31,7 @@
 			$columnsDataTypes[$row["COLUMN_NAME"]]=$row["DATA_TYPE"];
 		}
 	}
-	$queryRighe="SELECT ";
+	$queryRighe="SELECT TOP(100) ";
 
 	foreach ($columns as $column)
 	{

@@ -40,6 +40,14 @@
 						<i class="fal fa-th-list fa-2x"></i>
 						<span>Visualizza lotti<br>bifacciali</span>
 					</div>
+					<div class="homepageLink" title="Visualizza l'elenco dei lotti monobifacciali e scarica l' excel corrispondente" onclick="gotopath('visualizzaLottiMonobifacciali.php')">
+						<i class="fal fa-th-list fa-2x"></i>
+						<span>Visualizza lotti<br>monobifacciali</span>
+					</div>
+					<div class="homepageLink" title="Visualizza l'elenco dei lotti nuovibifacciali e scarica l' excel corrispondente" onclick="gotopath('visualizzaLottiNuovibifacciali.php')">
+						<i class="fal fa-th-list fa-2x"></i>
+						<span>Visualizza lotti<br>nuovibifacciali</span>
+					</div>
 					<div class="homepageLink" title="Gestisci e importa i pannelli bifacciali" onclick="gotopath('gestionePannelloBifacciale.php')">
 						<i class="fal fa-file-excel fa-2x"></i>
 						<span>Gestione pannello<br>bifacciale</span>

@@ -107,6 +107,8 @@
 		<!--<input type="button" value="Importa/Esporta Excel" data-toggle='tooltip' title='Importa/Esporta Excel' class="btnGoToPath" onclick="goToPath('importaEsportaExcel.php')" />-->
 		<input type="button" value="Visualizza lotti" data-toggle='tooltip' title='Visualizza lotti' class="btnGoToPath" onclick="goToPath('visualizzaLotti.php')" />
 		<input type="button" value="Visualizza lotti bifacciali" data-toggle='tooltip' title='Visualizza lotti bifacciali' class="btnGoToPath" onclick="goToPath('visualizzaLottiBifacciali.php')" />
+		<input type="button" value="Visualizza lotti monobifacciali" data-toggle='tooltip' title='Visualizza lotti monobifacciali' class="btnGoToPath" onclick="goToPath('visualizzaLottiMonobifacciali.php')" />
+		<input type="button" value="Visualizza lotti nuovibifacciali" data-toggle='tooltip' title='Visualizza lotti nuovibifacciali' class="btnGoToPath" onclick="goToPath('visualizzaLottiNuovibifacciali.php')" />
 		<input type="button" value="Gestione pannello bifacciale" data-toggle='tooltip' title='Gestione pannello bifacciale' class="btnGoToPath" onclick="goToPath('gestionePannelloBifacciale.php')" />
 		<input type="button" value="Gestione anagrafiche" data-toggle='tooltip' title='Gestione anagrafiche' class="btnGoToPath" onclick="goToPath('gestioneAnagrafiche.php')" />
 	</div>

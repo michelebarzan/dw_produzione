@@ -4,7 +4,7 @@
 	
 	$id_gn_array=json_decode($_REQUEST['JSONid_gn_array']);
 	$lotto=$_REQUEST['lotto'];
-	$bf=json_decode($_REQUEST['bf']);
+	$acronimo=$_REQUEST['acronimo'];
 	
 	$last_id_gn=end($id_gn_array);
 	array_pop($id_gn_array);
@@ -21,10 +21,8 @@
 	$q3="ALTER TABLE general_numbering DISABLE TRIGGER pulisciVuoti";
 	$r3=sqlsrv_query($conn,$q3);
 	
-	if($bf)
-		$q4="UPDATE general_numbering SET lotto_bf='$lotto' WHERE id_gn IN ('".implode("','",$id_gn_array)."')";
-	else
-		$q4="UPDATE general_numbering SET lotto='$lotto' WHERE id_gn IN ('".implode("','",$id_gn_array)."')";
+	$q4="UPDATE general_numbering SET lotto".$acronimo."='$lotto' WHERE id_gn IN ('".implode("','",$id_gn_array)."')";
+
 	$r4=sqlsrv_query($conn,$q4);
 	
 	/*$q5="ALTER TABLE general_numbering ENABLE TRIGGER aggiornaLotti";
@@ -38,10 +36,8 @@
 	$r1=true;
 	$r2=true;
 	
-	if($bf)
-		$q8="UPDATE general_numbering SET lotto_bf='$lotto' WHERE id_gn = $last_id_gn";
-	else
-		$q8="UPDATE general_numbering SET lotto='$lotto' WHERE id_gn = $last_id_gn";
+	$q8="UPDATE general_numbering SET lotto".$acronimo."='$lotto' WHERE id_gn = $last_id_gn";
+
 	$r8=sqlsrv_query($conn,$q8);
 	
 	if( $r1 && $r2 && $r3 && $r4 && $r5 && $r6 && $r7 && $r8)
